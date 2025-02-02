@@ -1,1 +1,30 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Image Editor</h1>
+        <form id="uploadForm" method="POST" enctype="multipart/form-data" action="/upload">
+            <input type="file" name="image" accept="image/*" required>
+            <select name="action">
+                <option value="grayscale">Grayscale</option>
+                <option value="blur">Blur</option>
+                <option value="sharpen">Sharpen</option>
+                <option value="edge_enhance">Edge Enhance</option>
+                <option value="sepia">Sepia</option>
+                <option value="invert">Invert Colors</option>
+                <option value="brightness">Increase Brightness</option>
+                <option value="contrast">Increase Contrast</option>
+                <option value="resize">Resize (400x400)</option>
+                <option value="rotate">Rotate 90°</option>
+            </select>
+            <button type="submit">Apply Effect</button>
+        </form>
+    </div>
+</body>
+</html>
