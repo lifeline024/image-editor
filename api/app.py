@@ -1,18 +1,16 @@
+
 from flask import Flask, render_template, request, send_file
 from PIL import Image, ImageEnhance, ImageFilter
 import os
-import logging
 
 app = Flask(__name__, template_folder="../templates", static_folder="../static")
 UPLOAD_FOLDER = '/tmp/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Home route to display the upload form
 @app.route('/')
 def index():
     return render_template('index.html')
 
-# Route to handle image upload and processing
 @app.route('/upload', methods=['POST'])
 def upload():
     file = request.files['image']
@@ -26,7 +24,6 @@ def upload():
 
         img = Image.open(filepath)
 
-        # Apply different filters/actions based on user input
         if action == 'grayscale':
             img = img.convert('L')
         elif action == 'blur':
@@ -65,11 +62,5 @@ def upload():
 
         return send_file(edited_path, as_attachment=True)
 
-# Error handler for Internal Server Error (500)
-@app.errorhandler(500)
-def internal_error(error):
-    logging.exception("An error occurred!")
-    return "Internal Server Error", 500
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run()
