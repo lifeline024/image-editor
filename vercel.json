@@ -1,6 +1,8 @@
-
 {
   "version": 2,
+  "env": {
+    "PYTHON_VERSION": "3.9"
+  },
   "builds": [
     {
       "src": "api/app.py",
