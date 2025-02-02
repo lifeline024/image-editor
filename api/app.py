@@ -3,7 +3,7 @@ from PIL import Image, ImageEnhance, ImageFilter
 import os
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '/tmp/uploads'  # Use /tmp for temporary file storage in Vercel
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Home route to display the upload form
